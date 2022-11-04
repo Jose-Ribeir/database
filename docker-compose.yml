@@ -1,0 +1,15 @@
+version: '3'
+services:
+  database:
+    image: postgres:15.0-bullseye
+    container_name: ulide_database_rep1
+    restart: always
+    volumes:
+        - ./data:/var/lib/postgresql/data
+        - ./my-postgres.conf:/etc/postgresql/postgresql.conf
+        - ./my-pg_hba.conf:/etc/postgresql/pg_hba.conf
+    ports:
+      - "1035:5432"
+    environment:
+      - 'POSTGRES_PASSWORD=my_password'
+      - 'POSTGRES_DB=my_default_database'
